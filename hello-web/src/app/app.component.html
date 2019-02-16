@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="form-group text-center">
+    <h1 class=" text-primary">Created by Almas Toimbekov for</h1>
+    <div class="well well-lg">
+      <img class="img-thumbnail" width="300" src="assets/img/BITechLogo.png">
+    </div>
+
+    <div class="form-group">
+      <input #userName type="text" class="form-control" placeholder="Укажите имя"
+             (keyup.enter)="sendName(userName.value)">
+    </div>
+
+    <div class="form-group">
+      <button type="button" class="btn-lg" (click)="sendName(userName.value)">Отправить</button>
+    </div>
+
+    <div class="text-left">
+      <h1 class="text-primary">
+        Результат: Привет, {{ userName.value }}!
+      </h1>
+      <input type="checkbox"
+             [checked]="showNames"
+             (change)="showNames = !showNames"><span class=" text-secondary">Показать историю использования имен</span>
+    </div>
+    <div [hidden]="!showNames">
+      <h3>Below is a list of used names:</h3>
+      <ul class="list-group">
+        <li class="list-group-item text-left" *ngFor="let item of listOfNames">{{ item }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
